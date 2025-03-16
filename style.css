@@ -1,0 +1,385 @@
+:root {
+    --bg-color: #0D1117;
+    --primary-color: #1F6FEB;
+    --accent-color: #E3390C;
+    --text-color: #ffffff;
+}
+
+body {
+    background-color: var(--bg-color);
+    color: #fff;
+    font-family: 'Segoe UI', system-ui, -apple-system, sans-serif;
+}
+
+/*Cursor personalizado*/
+#cursor-background {
+    position: fixed; /* Fixa o fundo do cursor em relação à tela, mesmo durante a rolagem */
+    width: 40px; /* Define a largura do fundo do cursor */
+    height: 40px; /* Define a altura do fundo do cursor */
+    border-radius: 50%; /* Faz com que o fundo do cursor tenha bordas arredondadas, formando um círculo */
+    border: solid 1px #ffffff; /* Adiciona uma borda sólida de 1px da cor que você definir*/
+    pointer-events: none; /* Garante que o cursor não interfira nas interações da página, como cliques ou seleções */
+    z-index: 9999; /* Mantém o fundo do cursor acima de todos os outros elementos da página */
+    mix-blend-mode: difference; /* Aplica o efeito de "diferença", o que inverte as cores onde o fundo do cursor passa, criando um contraste interessante */
+}
+
+/* Header*/
+.header {
+    padding: 1rem 0;
+    position: fixed;
+    width: 100%;
+    top: 0;
+    z-index: 1000;
+    background-color: rgba(13, 17, 23, 0.95);
+    backdrop-filter: blur(10px);
+}
+
+.navbar-brand {
+    font-weight: bold;
+    font-size: 1.5rem;
+    color: var(--primary-color) !important;
+}
+
+.navbar-brand:hover {
+    color: var(--accent-color);
+}
+
+.nav-link {
+    color: #fff !important;
+    transition: color 0.3s ease;
+    position: relative;
+    padding: 0.5rem 1rem;
+}
+
+.nav-link::after {
+    content: '';
+    position: absolute;
+    width: 0;
+    height: 2px;
+    bottom: 0;
+    left: 50%;
+    background-color: var(--accent-color);
+    transition: all 0.3s ease;
+}
+
+.nav-link:hover::after {
+    width: 100%;
+    left: 0;
+}
+
+.nav-link:hover {
+    color: var(--accent-color) !important;
+}
+
+/* Hero */
+.hero {
+    padding: 8rem 0 4rem;
+    min-height: 100vh;
+    display: flex;
+    align-items: center;
+}
+
+.profile-img {
+    width: 300px;
+    height: 300px;
+    border-radius: 50%;
+    border: 4px solid var(--primary-color);
+    box-shadow: 0 0 20px rgba(31, 111, 235, 0.3);
+    transition: transform 0.3s ease;
+    animation: float 6s ease-in-out infinite;
+}
+
+.profile-img:hover {
+    transform: scale(1.05);
+}
+
+.animate-text {
+    opacity: 0;
+    transform: translateY(20px);
+    animation: fadeInUp 0.8s ease forwards;
+    color: var(--primary-color);
+}
+
+.animate-text-delay {
+    opacity: 0;
+    transform: translateY(20px);
+    animation: fadeInUp 0.8s ease forwards;
+    animation-delay: 0.3s;
+}
+
+/* Botões */
+.buttons {
+    display: flex;
+    gap: 1rem;
+    margin-top: 2rem;
+}
+
+.btn {
+    padding: 0.8rem 1.5rem;
+    margin: 0.5rem;
+    border-radius: 25px;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    overflow: hidden;
+    position: relative;
+    z-index: 1;
+}
+
+.btn::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 0;
+    height: 100%;
+    background-color: rgba(255, 255, 255, 0.1);
+    transition: width 0.3s ease;
+    z-index: -1;
+}
+
+.btn:hover::before {
+    width: 100%;
+}
+
+.btn-primary {
+    background-color: var(--primary-color);
+    border: none;
+}
+
+.btn-secondary {
+    background-color: var(--accent-color);
+    border: none;
+}
+
+.btn-success {
+    background-color: #25D366;
+    border: none;
+}
+
+.center-button {
+    display: block;
+    margin: 0 auto;
+}
+
+.btn:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
+}
+
+/* Sections */
+.section {
+    padding: 5rem 0;
+}
+
+.section-title {
+    color: var(--primary-color);
+    text-align: center;
+    margin-bottom: 3rem;
+    position: relative;
+}
+
+.section-title::after {
+    content: '';
+    position: absolute;
+    bottom: -10px;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 50px;
+    height: 3px;
+    background-color: var(--accent-color);
+}
+
+/* Skills */
+.skills-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    gap: 2rem;
+    padding: 2rem 0;
+}
+
+.skills-list {
+    list-style: none;
+    padding: 0;
+    margin: 2rem 0;
+}
+
+.skills-list li {
+    margin-bottom: 1rem;
+    padding: 1rem;
+    background-color: rgba(255, 255, 255, 0.05);
+    border-radius: 8px;
+    transition: transform 0.3s ease, background-color 0.3s ease;
+}
+
+.skills-list li:hover {
+    transform: translateX(10px);
+    background-color: rgba(31, 111, 235, 0.1);
+}
+
+.skills-list strong {
+    color: var(--primary-color);
+    margin-right: 0.5rem;
+}
+
+.skill-card {
+    background-color: rgba(255, 255, 255, 0.05);
+    padding: 2rem;
+    border-radius: 10px;
+    text-align: center;
+    transition: transform 0.3s ease;
+    position: relative;
+    overflow: hidden;
+}
+
+.skill-card::before {
+    content: '';
+    position: absolute;
+    top: -100%;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(
+        to bottom,
+        rgba(31, 111, 235, 0.1),
+        transparent
+    );
+    transition: top 0.3s ease;
+}
+
+.skill-card:hover::before {
+    top: 0;
+}
+
+.skill-card:hover {
+    transform: translateY(-10px);
+}
+
+.skill-card i {
+    font-size: 3rem;
+    color: var(--primary-color);
+    margin-bottom: 1rem;
+    transition: transform 0.3s ease, color 0.3s ease;
+}
+
+.skill-card:hover i {
+    transform: scale(1.2);
+    color: var(--accent-color);
+}
+
+.skill-card h3 {
+    color: var(--text-color);
+    font-size: 1.2rem;
+}
+
+/* Contato */
+.contact-content {
+    display: flex;
+    justify-content: center;
+    gap: 2rem;
+    flex-wrap: wrap;
+}
+
+.contact-link {
+    color: var(--text-color);
+    text-decoration: none;
+    padding: 1rem 2rem;
+    border-radius: 5px;
+    background-color: rgba(31, 111, 235, 0.1);
+    transition: background-color 0.3s ease, transform 0.3s ease;
+}
+
+.contact-link:hover {
+    background-color: var(--primary-color);
+    color: var(--text-color);
+    transform: translateY(-3px);
+}
+
+.contact-link i {
+    margin-right: 0.5rem;
+}
+
+/* Formulário de contato */
+.contact-form {
+    max-width: 600px;
+    margin: 0 auto;
+    padding: 2rem;
+    background-color: rgba(255, 255, 255, 0.05);
+    border-radius: 10px;
+}
+
+.form-control {
+    background-color: rgba(255, 255, 255, 0.1);
+    border: none;
+    color: #fff;
+    padding: 0.8rem;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.form-control:focus {
+    background-color: rgba(255, 255, 255, 0.15);
+    box-shadow: 0 0 0 2px var(--primary-color);
+    color: #fff;
+    transform: translateY(-2px);
+}
+
+/* Footer */
+.footer {
+    background-color: rgba(255, 255, 255, 0.05);
+    padding: 2rem 0;
+    text-align: center;
+}
+
+/* Animações */
+@keyframes fadeInUp {
+    from {
+        opacity: 0;
+        transform: translateY(20px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+@keyframes float {
+    0% {
+        transform: translateY(0);
+    }
+    50% {
+        transform: translateY(-10px);
+    }
+    100% {
+        transform: translateY(0);
+    }
+}
+
+/* Responsividade */
+@media (max-width: 768px) {
+    .hero {
+        text-align: center;
+        padding: 6rem 0 2rem;
+    }
+    
+    .profile-img {
+        width: 200px;
+        height: 200px;
+        margin-bottom: 2rem;
+    }
+    
+    .skills-grid {
+        grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+    }
+    
+    .buttons {
+        justify-content: center;
+    }
+    
+    .contact-content {
+        flex-direction: column;
+        align-items: center;
+    }
+    
+    .skills-list li:hover {
+        transform: translateX(5px);
+    }
+}
+
